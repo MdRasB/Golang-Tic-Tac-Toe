@@ -1,0 +1,136 @@
+# ----------------------------
+# MONITOR
+# ----------------------------
+
+monitor=,preferred,auto,1
+
+# ----------------------------
+# PROGRAMS
+# ----------------------------
+
+$terminal = kitty
+$fileManager = dolphin
+$menu = wofi --show drun
+
+# ----------------------------
+# AUTOSTART
+# ----------------------------
+
+exec-once = waybar
+exec-once = hyprpaper
+exec-once = nm-applet
+exec-once = blueman-applet
+
+# ----------------------------
+# ENVIRONMENT
+# ----------------------------
+
+env = XCURSOR_SIZE,24
+
+# ----------------------------
+# LOOK
+# ----------------------------
+
+general {
+    gaps_in = 5
+    gaps_out = 10
+    border_size = 2
+
+    col.active_border = rgba(89b4faff)
+    col.inactive_border = rgba(444444ff)
+
+    resize_on_border = true
+    allow_tearing = false
+    layout = dwindle
+}
+
+decoration {
+    rounding = 8
+
+    blur {
+        enabled = false
+    }
+
+    shadow {
+        enabled = false
+    }
+}
+
+animations {
+    enabled = true
+
+    animation = windows,1,4,default
+    animation = border,1,4,default
+    animation = fade,1,4,default
+    animation = workspaces,1,4,default
+}
+
+# ----------------------------
+# INPUT
+# ----------------------------
+
+input {
+    kb_layout = us
+
+    follow_mouse = 1
+
+    touchpad {
+        natural_scroll = false
+    }
+
+    sensitivity = 0
+}
+
+# ----------------------------
+# KEYBINDINGS
+# ----------------------------
+
+$mainMod = SUPER
+
+# terminal
+bind = $mainMod, RETURN, exec, $terminal
+
+# app launcher
+bind = $mainMod, D, exec, $menu
+
+# file manager
+bind = $mainMod, E, exec, $fileManager
+
+# browser
+bind = $mainMod, B, exec, firefox
+
+# close window
+bind = $mainMod, Q, killactive
+
+# exit hyprland
+bind = $mainMod SHIFT, E, exit
+
+# fullscreen
+bind = $mainMod, F, fullscreen
+
+# floating toggle
+bind = $mainMod, V, togglefloating
+
+# move focus
+bind = $mainMod, H, movefocus, l
+bind = $mainMod, L, movefocus, r
+bind = $mainMod, K, movefocus, u
+bind = $mainMod, J, movefocus, d
+
+# workspaces
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+
+# move windows to workspace
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+
+# mouse
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
